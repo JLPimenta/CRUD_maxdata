@@ -55,6 +55,7 @@
 
     <div class="container">
       <div class="row">
+        
         <div class ="col mt=5">
           <?php
               include("../components/config.php"); // Arquivo de conexão com o BD
@@ -65,8 +66,13 @@
                 case "listar":
                   include ("lista.php");
                 break;
-                default:
-                  print "<h1>Cadastro de Clientes</h1>";
+                case "salvar":
+                  include ("../assets/salvar-cliente.php");
+                break;
+                case "editar":
+                  include ("../assets/editar-cliente.php");
+                break;
+
 
               }
           ?>

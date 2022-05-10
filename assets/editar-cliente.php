@@ -1,12 +1,8 @@
-<?php
-	include_once("../components/config.php") //incluir conexão BD
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
 
-
-  	<title>Cadastro de Clientes</title>
+  	<title>Editar de Clientes</title>
   	<meta http-equiv="X-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   	<meta charset="utf-8">
@@ -16,19 +12,24 @@
   </head>
  	<body>
  		<div class="container" style="max-width: 50%;">
-	 		<h1 style="margin-top: 10px;">Novo Cliente</h1>
-
+	 		<h1 style="margin-top: 10px;">Editar Cliente</h1>
+	 		<?php
+				$sql = "SELECT * FROM cliente WHERE idcliente=".$_REQUEST["idcliente"];
+				$res = $conn->query($sql);
+				$row = $res->fetch_object();
+			?>
 			<form action="?page=salvar" method="POST">
-				<input type="hidden" name="acao" value="cadastrar">
+				<input type="hidden" name="acao" value="editar">
+				<input type="hidden" name="idcliente" value="<?php print $row->idcliente ?>">
 
 					<div class="mb-3">
 						<label>Nome</label>
-						<input type="text" name="nome" class="form-control" required>
+						<input type="text" name="nome" class="form-control" value="<?php print $row->nome; ?>" required>
 					</div>
 
 					<div class="mb-3">
 						<label>CPF</label>
-						<input type="text" name="cpf" id="cpf" class="form-control" placeholder="Ex: 000.000.000-00" required>
+						<input type="text" name="cpf" id="cpf" class="form-control" placeholder="Ex: 000.000.000-00" value="<?php print $row->cpf; ?>" required>
 					</div><br>
 
 					<div style="display: inline;">
@@ -51,12 +52,12 @@
 
 					<div class="mb-3">
 						<label>Telefone</label>
-						<input type="text" name="telefone" id="telefone" class="form-control" placeholder="Ex: (00) 00000-0000" required>
+						<input type="text" name="telefone" id="telefone" class="form-control" placeholder="Ex: (00) 00000-0000" value="<?php print $row->telefone; ?>" required>
 					</div>
 
 					<div class="mb-3">
 						<label>E-mail</label>
-						<input type="email" name="email" class="form-control" placeholder="janedoe@example.com" required>
+						<input type="email" name="email" class="form-control" placeholder="janedoe@example.com" value="<?php print $row->email; ?>" required>
 					</div>
 
 					<div style="display: inline;">
