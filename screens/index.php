@@ -70,7 +70,7 @@
                   include ("../assets/salvar-cliente.php");
                 break;
                 case "editar":
-                  include ("../assets/editar-cliente.php");
+                  include ("cadastro.php");
                 break;
 
 

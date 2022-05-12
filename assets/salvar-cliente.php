@@ -1,15 +1,15 @@
-<?php 
+<?php
 	switch ($_REQUEST['acao']) {
 		case 'cadastrar':
 			$nome = $_POST['nome'];
 			$cpf = $_POST['cpf'];
-			$estado = $_POST['estado'];
 			$cidade = $_POST['cidade'];
 			$telefone = $_POST['telefone'];
 			$email = $_POST['email'];
 			$ativo = $_POST['ativo'];
 
-			$sql = "INSERT INTO cliente (nome, cpf, estado, cidade, telefone, email, ativo) VALUES ('{$nome}', '{$cpf}', '{$estado}', '{$cidade}', '{$telefone}', '{$email}', '{$ativo}')";
+			$sql = "INSERT INTO cliente (nome, cpf, idcidade, telefone, email, ativo) 
+					VALUES ('{$nome}', '{$cpf}', '{$cidade}', '{$telefone}', '{$email}', '{$ativo}')";
 
 			$res = $conn -> query($sql);
 
@@ -26,7 +26,6 @@
 		case 'editar':
 			$nome = $_POST['nome'];
 			$cpf = $_POST['cpf'];
-			$estado = $_POST['estado'];
 			$cidade = $_POST['cidade'];
 			$telefone = $_POST['telefone'];
 			$email = $_POST['email'];
@@ -35,8 +34,7 @@
 			$sql = "UPDATE cliente SET 
 						nome='{$nome}',
 						cpf='{$cpf}',
-						estado='{$estado}',
-						cidade='{$cidade}',
+						idcidade='{$cidade}',
 						telefone='{$telefone}',
 						email='{$email}',
 						ativo='{$ativo}'
@@ -47,10 +45,12 @@
 			if ($res == true){
 				print "<script>alert('Cadastro editado com sucesso');</script>";
 				print "<script>location.href='?page=listar';</script>";
+				console.log();
 
 			} else {
 				print "<script>alert('Não foi possível editar o cadastro');</script>";
 				print "<script>location.href='?page=listar';</script>";
+				console.log();
 			}
 			break;
 

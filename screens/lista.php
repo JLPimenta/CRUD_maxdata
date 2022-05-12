@@ -45,7 +45,7 @@
 				}
 				print "</table>";
 			} else {
-				print "<div class='alert alert-warning' role='alert'>Não foi possível encontrar algum registro</div>";
+				print "<div class='alert alert-warning' role='alert'>Aviso: Não foi possível encontrar nenhum registro</div>";
 			}
 		?>
 

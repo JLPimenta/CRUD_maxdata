@@ -7,7 +7,8 @@
 
 	while ($row_cidade = MySQLi_fetch_assoc($retornar_cidade)) {
 		$connect_UF[] = array(
-			'cidade' => $row_cidade['nome']
+			'id' => $row_cidade['idcidade'],
+			'cidade' => $row_cidade['nome'],
 		);
 	}
 
