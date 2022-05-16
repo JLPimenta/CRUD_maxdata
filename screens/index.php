@@ -24,7 +24,7 @@
 
     <title>Cadastro</title>
   </head>
-  <body style='overflow-x: hidden; overflow-y: hidden;'>
+  <body style='overflow-x: hidden;'>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
         <a style="font-weight: bolder;" class="navbar-brand text-light bg-dark" href="index.php">CRUD Maxdata</a>
