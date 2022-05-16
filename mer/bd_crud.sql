@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/05/2022 às 12:32
+-- Tempo de geração: 16/05/2022 às 14:43
 -- Versão do servidor: 10.4.24-MariaDB
 -- Versão do PHP: 8.1.0
 
@@ -5621,6 +5621,16 @@ CREATE TABLE `cliente` (
   `ativo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`idcliente`, `nome`, `cpf`, `idcidade`, `telefone`, `email`, `ativo`) VALUES
+(18, 'João Luiz', '080.336.901-86', 3192, '(63) 98401-8961', 'joaoluizlopespimenta@gmail.com', 1),
+(20, 'eli', '184.191.891-81', 5514, '(18) 41848-8181', 'eli@gmail.com', 1),
+(24, 'teste32', '155.488.818-81', 1353, '(26) 54988-9924', 'exemplo@gmail.coom', 1),
+(37, 'arlindo', '030.050.731-30', 5518, '(63) 99276-3599', 'arlindo@gmail.com', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -5700,7 +5710,8 @@ ALTER TABLE `cidade`
 -- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`idcliente`);
+  ADD PRIMARY KEY (`idcliente`),
+  ADD KEY `fk_cidade` (`idcidade`) USING BTREE;
 
 --
 -- Índices de tabela `estado`
@@ -5728,7 +5739,7 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `estado`
@@ -5751,6 +5762,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `cidade`
   ADD CONSTRAINT `cidade_ibfk_1` FOREIGN KEY (`idestado`) REFERENCES `estado` (`idestado`);
+
+--
+-- Restrições para tabelas `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `fk_cidade` FOREIGN KEY (`idcidade`) REFERENCES `cidade` (`idcidade`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,3 +13,4 @@
 	}
 
 	echo(json_encode($connect_UF));
+?>

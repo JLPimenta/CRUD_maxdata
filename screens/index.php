@@ -34,24 +34,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav" style="width: 100%; display: flex; justify-content: right; flex-direction: row; margin-right: 5px;">
             <li class="nav-item">
-              <a style="padding-right: 15px; margin-top: 5px;" class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
+              <a style="padding-right: 15px; margin-top: 5px;" class="nav-link active text-light" aria-current="page" href="index.php">Lista de Clientes</a>
             </li>
             <li class="nav-item">
               <a style="padding-right: 15px; margin-top: 5px;" class="nav-link text-light" href="?page=novo">Novo Cliente</a>
-            </li>
-            <li class="nav-item">
-              <a style="margin-top: 5px;" class="nav-link text-light" href="?page=listar">Visualizar Clientes</a>
             </li>
             <li style="margin-left: 15px; margin-top: 5px;" class="nav-item">
               <button class="btn btn-light pull-right" type="button">
                 <a style="text-decoration: none; color: black; font-weight: bold;" href='../components/sair.php'>Sair</a>
               </button>
             </li>
-          
           </ul>
         </div>
       </div>
     </nav>
+
 
     <div class="container">
       <div class="row">
@@ -72,8 +69,9 @@
                 case "editar":
                   include ("cadastro.php");
                 break;
-
-
+                default:
+                  include_once "lista.php";
+            
               }
           ?>
         </div>

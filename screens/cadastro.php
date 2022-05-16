@@ -66,17 +66,11 @@
 						<div class="mb-3" style="display: flex; justify-content: space-between; flex-direction: row;"> 
 							<select class="btn btn-secondary btn-sm dropdown mb-3"name="estado" id="selecionarUF" required>
 								<option value="">-UF-</option>
-								<?php
-											$consultar_estado = "SELECT * FROM estado ORDER BY nome"; //variável que busca registros de estado no BD
-											$retornar_estado = MySQLi_query($conn, $consultar_estado); //variável para retornar informações do BD
-											while ($row_estado = MySQLi_fetch_assoc($retornar_estado)) {
-												echo '<option value="'.$row_estado['idestado'].'">'.$row_estado['uf'].'</option>';
-										}
-									
-								?>
+									<?php include_once "../components/retorna_estado.php" ?>
 							</select>
+
 							<select  style="margin-left: 10px" class="form-select mb-3" name="cidade" id="selecionarCidade" required>
-								<option value="">--Selecione a Cidade--</option>
+										'<option value="">--Selecione a Cidade--</option>';
 							</select>
 						</div>
 					</div>
@@ -131,7 +125,7 @@
 			});
 		</script>
 
-
+		</script>
 
 		<script type="text/javascript">
 			$(function(){
@@ -140,7 +134,6 @@
 						$('#selecionarCidade').hide();
 						$.getJSON('../components/connect_UF.php?search=', {selecionarUF: $(this).val(), ajax: 'true'}, function(j) {
 								var options = '<option value="">--Selecione a Cidade--</option>';
-								console.log(j);
 								for (var i = 0; i < j.length; i++) {
 									options += '<option value="' + j[i].id + '">' + j[i].cidade + '</options>';
 								}
